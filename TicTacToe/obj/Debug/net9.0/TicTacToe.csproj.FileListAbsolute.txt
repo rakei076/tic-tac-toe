@@ -1,0 +1,15 @@
+/Users/rakel/Documents/GitHub/tic-tac-toe/TicTacToe/bin/Debug/net9.0/TicTacToe
+/Users/rakel/Documents/GitHub/tic-tac-toe/TicTacToe/bin/Debug/net9.0/TicTacToe.deps.json
+/Users/rakel/Documents/GitHub/tic-tac-toe/TicTacToe/bin/Debug/net9.0/TicTacToe.runtimeconfig.json
+/Users/rakel/Documents/GitHub/tic-tac-toe/TicTacToe/bin/Debug/net9.0/TicTacToe.dll
+/Users/rakel/Documents/GitHub/tic-tac-toe/TicTacToe/bin/Debug/net9.0/TicTacToe.pdb
+/Users/rakel/Documents/GitHub/tic-tac-toe/TicTacToe/obj/Debug/net9.0/TicTacToe.GeneratedMSBuildEditorConfig.editorconfig
+/Users/rakel/Documents/GitHub/tic-tac-toe/TicTacToe/obj/Debug/net9.0/TicTacToe.AssemblyInfoInputs.cache
+/Users/rakel/Documents/GitHub/tic-tac-toe/TicTacToe/obj/Debug/net9.0/TicTacToe.AssemblyInfo.cs
+/Users/rakel/Documents/GitHub/tic-tac-toe/TicTacToe/obj/Debug/net9.0/TicTacToe.csproj.CoreCompileInputs.cache
+/Users/rakel/Documents/GitHub/tic-tac-toe/TicTacToe/obj/Debug/net9.0/TicTacToe.sourcelink.json
+/Users/rakel/Documents/GitHub/tic-tac-toe/TicTacToe/obj/Debug/net9.0/TicTacToe.dll
+/Users/rakel/Documents/GitHub/tic-tac-toe/TicTacToe/obj/Debug/net9.0/refint/TicTacToe.dll
+/Users/rakel/Documents/GitHub/tic-tac-toe/TicTacToe/obj/Debug/net9.0/TicTacToe.pdb
+/Users/rakel/Documents/GitHub/tic-tac-toe/TicTacToe/obj/Debug/net9.0/TicTacToe.genruntimeconfig.cache
+/Users/rakel/Documents/GitHub/tic-tac-toe/TicTacToe/obj/Debug/net9.0/ref/TicTacToe.dll
