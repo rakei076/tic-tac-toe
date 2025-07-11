@@ -1,5 +1,5 @@
 ﻿using System;
-
+using TicTacToe;
 class MyGame
 {
         const int EMPTY = 0;
@@ -15,76 +15,23 @@ class MyGame
         
         Console.WriteLine("ゲームを開始します！");
         
-        int[,] board = new int[3,3]; 
+        Board board = new Board(); 
         
-        BoardInit(board);
+        board.Init();
         kaisu(board);
         
         
         // ここにあなたのロジックを追加
-        BoardPrint(board);
+        board.Print();
 
 
 
  
         
     }
-    static void BoardPrint(int[,] board)
-    {
-        Console.WriteLine("  0  1  2");
-        for (int i = 0; i < 3; i++)
-        {
-            Console.Write(i);
-            for (int j =0;j<3;j++)
-            {
-                
-                Console.Write("[");
-                if(board[i,j]==FIRST_PLAYER)
-                {
-                    Console.Write("○");
-                }
-                else if(board[i,j]==SECOND_PLAYER)
-                {
-                    Console.Write("x");
-                }
-                else
-                {
-                    Console.Write(" ");
-                }
-                Console.Write("]");
-            }
-            
-        Console.WriteLine();// 改行
-        }
 
-    }
-    static void BoardInit(int[,]board)
-    {
-        const int BOARD_SIZE = 3; // 例として3x3のボードサイズを設定
-        
-        
-        Console.Write("   "); // 行番号のスペース
-        for(int k =0;k<3;k++)
-        {
-            Console.Write(k + "  ");
-        }
-        Console.WriteLine(); // 改行
 
-        for (int i = 0; i < BOARD_SIZE; i++)
-        {
-            Console.Write(i);
-            for (int j =0;j<BOARD_SIZE;j++)
-            {
-                Console.Write("[ ");
-                
-                board[i,j] = EMPTY;
-                Console.Write("]");
-            }
-            
-        Console.WriteLine();// 改行
-        }
-    }
-    static bool ReadPlayerInput(int[,]board){
+    static bool ReadPlayerInput(Board board){
         Console.Write("> Input Row: ");
         int row;
         bool success =int.TryParse(Console.ReadLine(),out row);
@@ -94,40 +41,32 @@ class MyGame
             return false;
         }
         Console.Write("> Input Column: ");
-        int column;
-        success =int.TryParse(Console.ReadLine(),out column);
+        int col;
+        success =int.TryParse(Console.ReadLine(),out col);
         if(!success)
         {
             Console.WriteLine("Column :invalid input");
             return false;
         }
         
-        if (BoardUpdate(row,column,board)==false){
+        if (board.CheckRange(row,col)==false){
             return false;
         }
+
+        if (board.Updata(row,col,currentplayer)==false){
+            return false;
+        }
+        
     
             
-        board[row,column]=currentplayer;
+        
         Console.WriteLine($"Turn:{turnNumber} Player:{(currentplayer==FIRST_PLAYER?"○":"×")}");
         
         return true;
     }
-    static bool BoardUpdate(int row,int column,int[,]board)
-    {
-        if(row<0||row>2||column<0||column>2)
-        {
-            Console.WriteLine("Row :out of range");
-            return false;
-        }
-        if (board[row,column]!=EMPTY){
-            Console.WriteLine("その場所に数字を置いています");
-            return false;
-        }
-        return true;
-        
-    }
-    static void kaisu(int[,]board){
-        if(BoardCheckWinner(board)==1){
+
+    static void kaisu(Board board){
+        if(board.CheckWinner()==1){
             Console.Write($"game over 勝の方は{(currentplayer==FIRST_PLAYER?"○":"×")}");
             Console.WriteLine();
             gameover();
@@ -146,7 +85,7 @@ class MyGame
         if (ReadPlayerInput(board))
         {
             turnNumber++;
-            BoardPrint(board);
+            board.Print();
            
             Console.Write("------------");
             Console.WriteLine();
@@ -159,25 +98,7 @@ class MyGame
         Console.WriteLine();
         return;
     }
-    static int BoardCheckWinner(int[,]board){
-        for(int i=0;i<3;i++){
-            if(board[i,0]!=EMPTY&&board[i,0]==board[i,1]&&board[i,1]==board[i,2]){
-                return 1;
-            }
-        }
-        for(int i=0;i<3;i++){
-            if(board[0,i]!=EMPTY&&board[0,i]==board[1,i]&&board[1,i]==board[2,i]){
-                return 1;
-            }
-        }
-        if(board[0,0]!=EMPTY&&board[0,0]==board[1,1]&&board[1,1]==board[2,2]){
-            return 1;
-        }
-        if(board[0,2]!=EMPTY&&board[0,2]==board[1,1]&&board[1,1]==board[2,0]){
-            return 1;
-        }
-        return 0;
-    }
+
 
     
 }
@@ -190,3 +111,4 @@ class Program
         game.Start();
     }
 }
+//dotnet run
