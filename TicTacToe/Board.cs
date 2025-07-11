@@ -78,6 +78,15 @@ namespace TicTacToe
         return true;
     }
 
+    public bool IsEmpty(int row, int col)
+    {
+        if (row < 0 || row > 2 || col < 0 || col > 2)
+        {
+            return false;
+        }
+        return cells[row, col] == EMPTY;
+    }
+
     public bool Updata(int row,int col,int currentPlayer)
     {
 

@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using TicTacToe;
+
+namespace TicTacToe
+{
 class MyGame
 {
         const int EMPTY = 0;
         const int FIRST_PLAYER = 1;
         const int SECOND_PLAYER = -1;
-        private static int currentplayer = FIRST_PLAYER;
-        private static int turnNumber = 1;
+        private static int turnNumber = 1; 
 
     // ここにゲームの主処理を書く
     public void Start()
@@ -17,8 +20,13 @@ class MyGame
         
         Board board = new Board(); 
         
+        // プレイヤーを作成
+        Queue<Player> players = new Queue<Player>();
+        players.Enqueue(new HumanPlayer(FIRST_PLAYER));
+        players.Enqueue(new RandomPlayer(SECOND_PLAYER));
+        
         board.Init();
-        kaisu(board);
+        kaisu(board, players);
         
         
         // ここにあなたのロジックを追加
@@ -31,21 +39,12 @@ class MyGame
     }
 
 
-    static bool ReadPlayerInput(Board board){
-        Console.Write("> Input Row: ");
+    static bool ReadPlayerInput(Board board, Player currentPlayer){
         int row;
-        bool success =int.TryParse(Console.ReadLine(),out row);
-        if(!success)
-        {
-            Console.WriteLine("Row :invalid input");
-            return false;
-        }
-        Console.Write("> Input Column: ");
         int col;
-        success =int.TryParse(Console.ReadLine(),out col);
+        bool success = currentPlayer.GetDecision(board, out row, out col);
         if(!success)
         {
-            Console.WriteLine("Column :invalid input");
             return false;
         }
         
@@ -53,21 +52,23 @@ class MyGame
             return false;
         }
 
-        if (board.Updata(row,col,currentplayer)==false){
+        if (board.Updata(row,col,currentPlayer.PlayerNumber)==false){
             return false;
         }
         
     
             
         
-        Console.WriteLine($"Turn:{turnNumber} Player:{(currentplayer==FIRST_PLAYER?"○":"×")}");
+        Console.WriteLine($"Turn:{turnNumber} Player:{(currentPlayer.PlayerNumber==FIRST_PLAYER?"○":"×")}");
         
         return true;
     }
 
-    static void kaisu(Board board){
+    static void kaisu(Board board, Queue<Player> players){
+        Player currentPlayer = players.Peek();
+        
         if(board.CheckWinner()==1){
-            Console.Write($"game over 勝の方は{(currentplayer==FIRST_PLAYER?"○":"×")}");
+            Console.Write($"game over 勝の方は{(currentPlayer.PlayerNumber==FIRST_PLAYER?"○":"×")}");
             Console.WriteLine();
             gameover();
             return;
@@ -76,13 +77,8 @@ class MyGame
                 gameover();
                 return;
             }
-        currentplayer = FIRST_PLAYER;
-        if(turnNumber%2==0)
-        {
-            currentplayer = SECOND_PLAYER;
-        }
         
-        if (ReadPlayerInput(board))
+        if (ReadPlayerInput(board, currentPlayer))
         {
             turnNumber++;
             board.Print();
@@ -90,8 +86,11 @@ class MyGame
             Console.Write("------------");
             Console.WriteLine();
             
+            // プレイヤーを交代
+            Player player = players.Dequeue();
+            players.Enqueue(player);
         }
-        kaisu(board);
+        kaisu(board, players);
     }
     static void gameover(){
         Console.Write("game over");
@@ -111,4 +110,4 @@ class Program
         game.Start();
     }
 }
-//dotnet run
+}
