@@ -11,7 +11,7 @@ class MyGame
         const int SECOND_PLAYER = -1;
         private static int turnNumber = 1; 
 
-    // ここにゲームの主処理を書く
+    
     public void Start()
     {
 
@@ -20,7 +20,7 @@ class MyGame
         
         Board board = new Board(); 
         
-        // プレイヤーを作成
+        
         Queue<Player> players = new Queue<Player>();
         players.Enqueue(new HumanPlayer(FIRST_PLAYER));
         players.Enqueue(new RandomPlayer(SECOND_PLAYER));
@@ -29,7 +29,7 @@ class MyGame
         kaisu(board, players);
         
         
-        // ここにあなたのロジックを追加
+       
         board.Print();
 
 
@@ -67,16 +67,12 @@ class MyGame
     static void kaisu(Board board, Queue<Player> players){
         Player currentPlayer = players.Peek();
         
-        if(board.CheckWinner()==1){
-            Console.Write($"game over 勝の方は{(currentPlayer.PlayerNumber==FIRST_PLAYER?"○":"×")}");
-            Console.WriteLine();
+       
+        if (turnNumber==10){
+            Console.WriteLine("勝つ方はいません");
             gameover();
             return;
         }
-        if (turnNumber==10){
-                gameover();
-                return;
-            }
         
         if (ReadPlayerInput(board, currentPlayer))
         {
@@ -85,6 +81,14 @@ class MyGame
            
             Console.Write("------------");
             Console.WriteLine();
+            
+            // 在玩家下棋后立即检查胜负
+            if(board.CheckWinner()==1){
+                Console.Write($"game over 勝の方は{(currentPlayer.PlayerNumber==FIRST_PLAYER?"○":"×")}");
+                Console.WriteLine();
+                gameover();
+                return;
+            }
             
             // プレイヤーを交代
             Player player = players.Dequeue();

@@ -12,20 +12,20 @@ namespace TicTacToe
         {
             Random random = new Random();
             
-            // 简单的随机选择空位置
-            for (int i = 0; i < 100; i++)  // 最多尝试100次
+            
+            for (int i = 0; i < 100; i++)  
             {
                 row = random.Next(0, 3);
                 col = random.Next(0, 3);
                 
-                // 检查位置是否为空
+                
                 if (board.IsEmpty(row, col) == true)
                 {
                     return true;
                 }
             }
             
-            // 如果随机找不到，就按顺序找第一个空位
+            
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
@@ -39,7 +39,7 @@ namespace TicTacToe
                 }
             }
             
-            // 没有空位了
+           
             row = -1;
             col = -1;
             return false;

@@ -8,25 +8,24 @@
     "net9.0": []
   },
   "packageFolders": {
-    "/Users/rakel/.nuget/packages/": {}
+    "/Users/mc/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/rakel/Documents/GitHub/tic-tac-toe/TicTacToe/TicTacToe.csproj",
+      "projectUniqueName": "/Users/mc/Documents/GitHub/number-game/tic-tac-toe/TicTacToe/TicTacToe.csproj",
       "projectName": "TicTacToe",
-      "projectPath": "/Users/rakel/Documents/GitHub/tic-tac-toe/TicTacToe/TicTacToe.csproj",
-      "packagesPath": "/Users/rakel/.nuget/packages/",
-      "outputPath": "/Users/rakel/Documents/GitHub/tic-tac-toe/TicTacToe/obj/",
+      "projectPath": "/Users/mc/Documents/GitHub/number-game/tic-tac-toe/TicTacToe/TicTacToe.csproj",
+      "packagesPath": "/Users/mc/.nuget/packages/",
+      "outputPath": "/Users/mc/Documents/GitHub/number-game/tic-tac-toe/TicTacToe/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/rakel/.nuget/NuGet/NuGet.Config"
+        "/Users/mc/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
-        "/opt/homebrew/Cellar/dotnet/9.0.7/libexec/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -45,7 +44,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.100"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net9.0": {
@@ -66,7 +65,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/9.0.7/libexec/sdk/9.0.108/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.301/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -11,7 +11,7 @@ namespace TicTacToe
         public override bool GetDecision(Board board, out int row, out int col)
         {
             Console.Write("> Input Row: ");
-            string input1 = Console.ReadLine();
+            string input1 = Console.ReadLine() ?? "";  
             bool success1 = int.TryParse(input1, out row);
             
             if (!success1)
@@ -22,7 +22,7 @@ namespace TicTacToe
             }
             
             Console.Write("> Input Column: ");
-            string input2 = Console.ReadLine();
+            string input2 = Console.ReadLine() ?? ""; 
             bool success2 = int.TryParse(input2, out col);
             
             if (!success2)
