@@ -82,7 +82,7 @@ class MyGame
             Console.Write("------------");
             Console.WriteLine();
             
-            // 在玩家下棋后立即检查胜负
+            
             if(board.CheckWinner()==1){
                 Console.Write($"game over 勝の方は{(currentPlayer.PlayerNumber==FIRST_PLAYER?"○":"×")}");
                 Console.WriteLine();
